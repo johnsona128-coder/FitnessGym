@@ -1,4 +1,4 @@
-# pbi_feature.yml - CORRECTED VERSION
+# pbi_feature.yml - FINAL CORRECTED VERSION (Using Block Strings)
 name: Product Backlog Item (Feature)
 description: Use this template for new user stories, features, or requirements.
 title: "[PBI]: "
@@ -15,10 +15,11 @@ body:
     id: user-story
     attributes:
       label: 1. User Story
-      description: Follow the format: "As a [role], I want [goal], so that [reason]."
-      # FIX APPLIED HERE: Removed the colon from the placeholder text.
-      placeholder: "As a Gym Owner, I want a client progress report, so I can reassign programming efficiently."
-      value: "As a [role], I want [goal], so that [reason]."
+      # Using a Block String (|) to handle internal colons safely
+      description: |
+        Follow the format: "As a [role], I want [goal], so that [reason]."
+      placeholder: "As a Gym Owner, I want a client progress report so I can reassign programming efficiently"
+      value: "As a [role], I want [goal], so that [reason]"
     validations:
       required: true
 
@@ -26,8 +27,10 @@ body:
     id: acceptance-criteria
     attributes:
       label: 2. Acceptance Criteria
-      description: The clear, measurable conditions that must be met to mark this PBI as Done. (Use bullet points for clarity)
-      placeholder: "Owners can view and interpret client progress data to inform programming."
+      # Using a Block String (|) to handle internal colons safely
+      description: |
+        The clear, measurable conditions that must be met to mark this PBI as Done. (Use bullet points for clarity)
+      placeholder: "Owners can view and interpret client progress data to inform programming"
     validations:
       required: true
       
@@ -47,7 +50,7 @@ body:
     id: story-points
     attributes:
       label: 4. Story Points (Complexity Estimate)
-      description: Estimate the effort using your team's scale (e.g., 1, 2, 3, 5, 8). Enter as a single number.
+      description: Estimate the effort using your team's scale (e.g. 1, 2, 3, 5, 8). Enter as a single number.
       placeholder: "2"
     validations:
       required: true
@@ -56,6 +59,6 @@ body:
     id: how-details
     attributes:
       label: 5. How Details (Optional)
-      description: Briefly describe the implementation or solution approach ("How,Display summarized reports across clients...").
+      description: Briefly describe the implementation or solution approach (e.g. "Display summarized reports across clients").
     validations:
       required: false
