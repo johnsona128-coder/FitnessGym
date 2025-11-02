@@ -1,0 +1,6 @@
+# config.yml
+blank_issues_enabled: false
+contact_links:
+  - name: General Questions or Discussion
+    url: https://github.com/johnsona128-coder/FitnessGym/discussions
+    about: Please ask questions in our Discussions area instead of opening an issue.
