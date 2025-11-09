@@ -86,7 +86,7 @@ const handleExerciseChange = (e) => {
 
     return (
         <div className="workout-builder" style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-            <h2>Initial Workout Creation 🏋️‍♀️</h2>
+            <h2>Initial Workout Creation</h2>
             <form onSubmit={handleSaveWorkout}>
                 
                 {/* Workout Metadata Section */}
