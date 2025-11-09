@@ -34,3 +34,84 @@ app.get('/api/test', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+// ============= Exercises ENDPOINTS =============
+// Get all Exercises
+app.get('/api/Exercise', (req, res) => {
+  db.query('SELECT * FROM Exercise ORDER BY date DESC', (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Get single Exercise
+app.get('/api/Exercise/:id', (req, res) => {
+  db.query('SELECT * FROM Exercise WHERE id = ?', [req.params.id], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(results[0]);
+  });
+});
+
+// Create Exercise
+app.post('/api/Exercise', (req, res) => {
+  const { ExerciseName, Description,MuscleGroupID,ExerciseGroupID,SafetyTips } = req.body;
+  db.query(
+    'INSERT INTO Exercise (ExerciseName, Description,MuscleGroupID,ExerciseGroupID,SafetyTips) VALUES (?, ?, ?, ?, ?)',
+    [ExerciseName, Description,MuscleGroupID,ExerciseGroupID,SafetyTips],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({ 
+        id: result.insertId, 
+        name, 
+        wod_type, 
+        description, 
+        time_cap, 
+        date, 
+        is_benchmark 
+      });
+    }
+  );
+});
+
+// Update Exercise
+app.put('/api/Exercise/:ExerciseID', (req, res) => {
+  const {ExerciseName, Description,MuscleGroupID,ExerciseGroupID,SafetyTips } = req.body;
+  db.query(
+    'UPDATE Exercise SET ExerciseName = ?, Description = ?, MuscleGroupID = ?, ExerciseGroupID = ?, SafetyTips = ?, WHERE ExerciseID = ?',
+    [ExerciseName, Description,MuscleGroupID,ExerciseGroupID,SafetyTips, req.params.ExerciseID],
+    (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({ 
+        id: req.params.ExerciseID, 
+        name, 
+        description, 
+        MuscleGroupID, 
+	ExerciseGroupID,
+        SafetyTips
+      });
+    }
+  );
+});
+
+// Delete Exercise
+app.delete('/api/Exercise/:ExerciseID', (req, res) => {
+  db.query('DELETE FROM Exercise WHERE ExerciseID = ?', [req.params.ExerciseID], (err) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ message: 'Exercise deleted' });
+  });
+});
