@@ -49,7 +49,7 @@ app.get('/api/Exercise', (req, res) => {
 
 // Get single Exercise
 app.get('/api/Exercise/:ExerciseID', (req, res) => {
-  db.query('SELECT * FROM Exercise WHERE ExerciseID = ?', [req.params.id], (err, results) => {
+  db.query('SELECT * FROM Exercise where ExerciseID = ?', [req.params.ExerciseID], (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -116,11 +116,11 @@ app.delete('/api/Exercise/:ExerciseID', (req, res) => {
   });
 });
 
-// ============= ExerciseSteps ENDPOINTS =============
+// ============= Exercises ENDPOINTS =============
 
 // Get all ExerciseSteps
 app.get('/api/ExerciseSteps', (req, res) => {
-  db.query('SELECT * FROM ExerciseSteps ORDER BY Name DESC', (err, results) => {
+  db.query('SELECT * FROM ExerciseSteps ORDER BY OrderNumber', (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -142,10 +142,10 @@ app.get('/api/ExerciseSteps/:StepID', (req, res) => {
 
 // Create ExerciseSteps
 app.post('/api/ExerciseSteps', (req, res) => {
-  const { ExerciseID, StepDescription,OrderNumber, req.params.StepID } = req.body;
+  const { ExerciseID, StepDescription,OrderNumber } = req.body;
   db.query(
-    'INSERT INTO ExerciseSteps (ExerciseID, StepDescription,OrderNumber, req.params.StepID) VALUES (?, ?, ?)',
-    [ExerciseID, StepDescription,OrderNumber, req.params.StepID],
+    'INSERT INTO ExerciseSteps (ExerciseID, StepDescription,OrderNumber) VALUES (?, ?, ?)',
+    [ExerciseID, StepDescription,OrderNumber],
     (err, result) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -153,16 +153,16 @@ app.post('/api/ExerciseSteps', (req, res) => {
       }
       res.json({ 
         id: result.insertId, 
-        ExerciseID, StepDescription,OrderNumber, req.params.StepID      });
+        ExerciseID, StepDescription,OrderNumber  });
     }
   );
 });
 
-// Update ExerciseSteps
-app.put('/api/ExerciseSteps/:StepID', (req, res) => {
-  const {ExerciseID, StepDescription,OrderNumber} = req.body;
+// Update Exercise
+app.put('/api/Exercise/:StepID', (req, res) => {
+  const {ExerciseID, StepDescription,OrderNumber } = req.body;
   db.query(
-    'UPDATE ExerciseSteps SET ExerciseID = ?, StepDescription = ?, OrderNumber = ?, WHERE StepID = ?',
+    'UPDATE Exercise SET ExerciseID = ?, StepDescription = ?, OrderNumber = ?, ExerciseGroupID = ?, WHERE StepID = ?',
     [ExerciseID, StepDescription,OrderNumber, req.params.StepID],
     (err) => {
       if (err) {
@@ -170,7 +170,12 @@ app.put('/api/ExerciseSteps/:StepID', (req, res) => {
         return;
       }
       res.json({ 
-        id: req.params.ExerciseID, ExerciseID, StepDescription,OrderNumber, req.params.StepID    }
+        id: req.params.StepID,  
+        ExerciseID,
+        StepDescription,
+        OrderNumber
+      });
+    }
   );
 });
 
