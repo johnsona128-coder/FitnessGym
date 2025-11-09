@@ -1,0 +1,64 @@
+# pbi_feature.yml - FINAL CORRECTED VERSION (Using Block Strings)
+name: Product Backlog Item (Feature)
+description: Use this template for new user stories, features, or requirements.
+title: "[PBI]: "
+labels: ["pbi", "feature", "to do"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Define the Product Backlog Item (PBI)
+        Please complete all required fields (marked with *).
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: 1. User Story
+      # Using a Block String (|) to handle internal colons safely
+      description: |
+        Follow the format: "As a [role], I want [goal], so that [reason]."
+      placeholder: "As a Gym Owner, I want a client progress report so I can reassign programming efficiently"
+      value: "As a [role], I want [goal], so that [reason]"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: 2. Acceptance Criteria
+      # Using a Block String (|) to handle internal colons safely
+      description: |
+        The clear, measurable conditions that must be met to mark this PBI as Done. (Use bullet points for clarity)
+      placeholder: "Owners can view and interpret client progress data to inform programming"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 3. Priority
+      description: How critical is this PBI for the next iteration?
+      options:
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+      
+  - type: input
+    id: story-points
+    attributes:
+      label: 4. Story Points (Complexity Estimate)
+      description: Estimate the effort using your team's scale (e.g. 1, 2, 3, 5, 8). Enter as a single number.
+      placeholder: "2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: how-details
+    attributes:
+      label: 5. How Details (Optional)
+      description: Briefly describe the implementation or solution approach (e.g. "Display summarized reports across clients").
+    validations:
+      required: false
