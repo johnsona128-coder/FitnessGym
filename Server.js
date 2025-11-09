@@ -38,7 +38,7 @@ app.listen(PORT, () => {
 // ============= Exercises ENDPOINTS =============
 // Get all Exercises
 app.get('/api/Exercise', (req, res) => {
-  db.query('SELECT * FROM Exercise ORDER BY date DESC', (err, results) => {
+  db.query('SELECT * FROM Exercise ORDER BY ExerciseName DESC', (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -48,8 +48,8 @@ app.get('/api/Exercise', (req, res) => {
 });
 
 // Get single Exercise
-app.get('/api/Exercise/:id', (req, res) => {
-  db.query('SELECT * FROM Exercise WHERE id = ?', [req.params.id], (err, results) => {
+app.get('/api/Exercise/:ExerciseID', (req, res) => {
+  db.query('SELECT * FROM Exercise WHERE ExerciseID = ?', [req.params.id], (err, results) => {
     if (err) {
       res.status(500).json({ error: err.message });
       return;
@@ -113,5 +113,74 @@ app.delete('/api/Exercise/:ExerciseID', (req, res) => {
       return;
     }
     res.json({ message: 'Exercise deleted' });
+  });
+});
+
+// ============= ExerciseSteps ENDPOINTS =============
+
+// Get all ExerciseSteps
+app.get('/api/ExerciseSteps', (req, res) => {
+  db.query('SELECT * FROM ExerciseSteps ORDER BY Name DESC', (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Get single ExerciseSteps
+app.get('/api/ExerciseSteps/:StepID', (req, res) => {
+  db.query('SELECT * FROM ExerciseSteps WHERE StepID = ?', [req.params.StepID], (err, results) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json(results[0]);
+  });
+});
+
+// Create ExerciseSteps
+app.post('/api/ExerciseSteps', (req, res) => {
+  const { ExerciseID, StepDescription,OrderNumber, req.params.StepID } = req.body;
+  db.query(
+    'INSERT INTO ExerciseSteps (ExerciseID, StepDescription,OrderNumber, req.params.StepID) VALUES (?, ?, ?)',
+    [ExerciseID, StepDescription,OrderNumber, req.params.StepID],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({ 
+        id: result.insertId, 
+        ExerciseID, StepDescription,OrderNumber, req.params.StepID      });
+    }
+  );
+});
+
+// Update ExerciseSteps
+app.put('/api/ExerciseSteps/:StepID', (req, res) => {
+  const {ExerciseID, StepDescription,OrderNumber} = req.body;
+  db.query(
+    'UPDATE ExerciseSteps SET ExerciseID = ?, StepDescription = ?, OrderNumber = ?, WHERE StepID = ?',
+    [ExerciseID, StepDescription,OrderNumber, req.params.StepID],
+    (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({ 
+        id: req.params.ExerciseID, ExerciseID, StepDescription,OrderNumber, req.params.StepID    }
+  );
+});
+
+// Delete ExerciseSteps
+app.delete('/api/ExerciseSteps/:StepID', (req, res) => {
+  db.query('DELETE FROM ExerciseSteps WHERE StepID = ?', [req.params.StepID], (err) => {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ message: 'Exercise Step deleted' });
   });
 });
