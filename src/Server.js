@@ -13,7 +13,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'MJY^5thnMJY^5thn', // ← CHANGE THIS!
+  password: 'ZAQ!@WSXcde34rfv', // ← CHANGE THIS!
   database: 'gym_tracker'
 });
 
