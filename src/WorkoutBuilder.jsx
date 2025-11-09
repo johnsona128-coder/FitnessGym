@@ -85,7 +85,7 @@ function WorkoutBuilder() {
 
                 {/* Add Exercise Section */}
                 <hr style={{ margin: '20px 0' }} />
-                <h3>Add Exercise 💪</h3>
+                <h3>Add Exercise </h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 0.5fr', gap: '10px', alignItems: 'flex-end', marginBottom: '15px' }}>
                     
                     <div>
@@ -124,8 +124,28 @@ function WorkoutBuilder() {
                     </button>
                 </div>
 
-                {/* Save button placeholder for now */}
-                <button type="submit" style={{ visibility: 'hidden' }}>Save (temp)</button>
+                {/* Workout Plan Display Section */}
+                <hr style={{ margin: '20px 0' }} />
+                <h3>Current Workout Plan ({workout.exercises.length} Exercises)</h3>
+                {workout.exercises.length === 0 ? (
+                    <p style={{ fontStyle: 'italic' }}>No exercises added yet. Use the form above to build the plan.</p>
+                ) : (
+                    <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
+                        {workout.exercises.map((ex, index) => (
+                            <li key={index} style={{ marginBottom: '5px' }}>
+                                <strong>{ex.name}</strong>: {ex.sets} sets of {ex.reps} reps
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                
+                {/* Final Save Button */}
+                <button 
+                    type="submit" 
+                    style={{ marginTop: '30px', padding: '10px 20px', backgroundColor: '#4CAF50', color: 'white', border: 'none', cursor: 'pointer', borderRadius: '5px' }}
+                >
+                    Save Final Workout
+                </button>
             </form>
         </div>
     );
