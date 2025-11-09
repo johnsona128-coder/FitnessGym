@@ -48,10 +48,26 @@ function WorkoutBuilder() {
         }
     };
 
-    // Placeholder for the remaining handler
-    const handleSaveWorkout = (e) => { 
-        e.preventDefault(); 
-        alert('Save function not fully implemented yet.');
+    const handleSaveWorkout = (e) => {
+        e.preventDefault();
+
+        if (workout.exercises.length === 0 || !workout.clientName) {
+            alert('Please enter a client name and add at least one exercise before saving.');
+            return;
+        }
+        
+        console.log('--- PBI 3.1: SAVING INITIAL WORKOUT ---');
+        console.log(`Client: ${workout.clientName}, Date: ${workout.date}`);
+        console.log(JSON.stringify(workout, null, 2));
+        alert(`Workout saved for ${workout.clientName} with ${workout.exercises.length} exercises!`);
+        
+        // Reset form
+        setWorkout({
+            clientName: '',
+            date: new Date().toISOString().substring(0, 10),
+            exercises: [],
+            clusterName: 'Main Lift'
+        });
     };
 
     return (
@@ -85,7 +101,7 @@ function WorkoutBuilder() {
 
                 {/* Add Exercise Section */}
                 <hr style={{ margin: '20px 0' }} />
-                <h3>Add Exercise </h3>
+                <h3>Add Exercise</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 0.5fr', gap: '10px', alignItems: 'flex-end', marginBottom: '15px' }}>
                     
                     <div>
