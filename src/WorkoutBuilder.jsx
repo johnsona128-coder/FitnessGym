@@ -36,15 +36,97 @@ function WorkoutBuilder() {
         });
     };
 
-    // Placeholder for the remaining handlers
-    const handleAddExercise = () => {};
-    const handleSaveWorkout = () => {};
+    const handleAddExercise = () => {
+        if (newExercise.name && newExercise.sets > 0 && newExercise.reps > 0) {
+            setWorkout({
+                ...workout,
+                exercises: [...workout.exercises, newExercise]
+            });
+            setNewExercise({ name: '', sets: 0, reps: 0 });
+        } else {
+            alert('Please enter a valid exercise name, sets, and reps (greater than 0).');
+        }
+    };
+
+    // Placeholder for the remaining handler
+    const handleSaveWorkout = (e) => { 
+        e.preventDefault(); 
+        alert('Save function not fully implemented yet.');
+    };
 
     return (
-        <div className="workout-builder">
-            <h2>Initial Workout Creation</h2>
-            {/* Form and UI will be added in subsequent commits */}
-            <p>Component is ready to build the UI and logic.</p>
+        <div className="workout-builder" style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+            <h2>Initial Workout Creation 🏋️‍♀️</h2>
+            <form onSubmit={handleSaveWorkout}>
+                
+                {/* Workout Metadata Section */}
+                <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', fontWeight: 'bold' }}>Client Name:</label>
+                    <input
+                        type="text"
+                        name="clientName"
+                        value={workout.clientName}
+                        onChange={handleWorkoutChange}
+                        required
+                        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+                    />
+                </div>
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'block', fontWeight: 'bold' }}>Workout Date:</label>
+                    <input
+                        type="date"
+                        name="date"
+                        value={workout.date}
+                        onChange={handleWorkoutChange}
+                        required
+                        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+                    />
+                </div>
+
+                {/* Add Exercise Section */}
+                <hr style={{ margin: '20px 0' }} />
+                <h3>Add Exercise 💪</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 0.5fr', gap: '10px', alignItems: 'flex-end', marginBottom: '15px' }}>
+                    
+                    <div>
+                        <label style={{ display: 'block' }}>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={newExercise.name}
+                            onChange={handleExerciseChange}
+                            style={{ width: '100%', padding: '8px' }}
+                        />
+                    </div>
+                    <div>
+                        <label style={{ display: 'block' }}>Sets:</label>
+                        <input
+                            type="number"
+                            name="sets"
+                            value={newExercise.sets}
+                            onChange={handleExerciseChange}
+                            style={{ width: '100%', padding: '8px' }}
+                        />
+                    </div>
+                    <div>
+                        <label style={{ display: 'block' }}>Reps:</label>
+                        <input
+                            type="number"
+                            name="reps"
+                            value={newExercise.reps}
+                            onChange={handleExerciseChange}
+                            style={{ width: '100%', padding: '8px' }}
+                        />
+                    </div>
+                    
+                    <button type="button" onClick={handleAddExercise} style={{ padding: '8px 15px', height: '35px' }}>
+                        + Add
+                    </button>
+                </div>
+
+                {/* Save button placeholder for now */}
+                <button type="submit" style={{ visibility: 'hidden' }}>Save (temp)</button>
+            </form>
         </div>
     );
 }
