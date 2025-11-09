@@ -28,13 +28,27 @@ function WorkoutBuilder() {
             [e.target.name]: e.target.value
         });
     };
+
+const handleExerciseChange = (e) => {
+    const { name, value, type } = e.target;
+    let newValue = value;
+
+    if (type === 'number') {
+        // If the input is empty (""), set the value to 0 to prevent NaN.
+        // If the value is not empty, use parseInt.
+        newValue = value === '' ? 0 : parseInt(value);
+        
+        // This check handles the NaN case just in case the input bypasses 'number' type restrictions
+        if (isNaN(newValue)) {
+            newValue = 0;
+        }
+    }
     
-    const handleExerciseChange = (e) => {
-        setNewExercise({
-            ...newExercise,
-            [e.target.name]: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value
-        });
-    };
+    setNewExercise({
+        ...newExercise,
+        [name]: newValue
+    });
+};
 
     const handleAddExercise = () => {
         if (newExercise.name && newExercise.sets > 0 && newExercise.reps > 0) {
