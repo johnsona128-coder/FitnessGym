@@ -22,9 +22,21 @@ function WorkoutBuilder() {
         reps: 0,
     });
 
-    // Placeholder for handlers
-    const handleWorkoutChange = () => {};
-    const handleExerciseChange = () => {};
+    const handleWorkoutChange = (e) => {
+        setWorkout({
+            ...workout,
+            [e.target.name]: e.target.value
+        });
+    };
+    
+    const handleExerciseChange = (e) => {
+        setNewExercise({
+            ...newExercise,
+            [e.target.name]: e.target.type === 'number' ? parseInt(e.target.value) : e.target.value
+        });
+    };
+
+    // Placeholder for the remaining handlers
     const handleAddExercise = () => {};
     const handleSaveWorkout = () => {};
 
@@ -37,5 +49,4 @@ function WorkoutBuilder() {
     );
 }
 
-// **This line is the most important part to fix the Parcel error!**
 export default WorkoutBuilder;
