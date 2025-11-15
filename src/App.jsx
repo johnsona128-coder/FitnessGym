@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link } from 'react-router';
-import Demonstration from './exercises/demonstration';
+import Demonstration from './exercises/Demonstration';
 
 export function App() {
   return (
