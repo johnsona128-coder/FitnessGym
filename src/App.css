@@ -1,11 +1,11 @@
 html {
-  color-scheme: light dark;
+  color-scheme: dark;
   font-family: system-ui;
   height: 100%;
 }
 
 #app {
-  color-scheme: light dark;
+  color-scheme: dark;
   font-family: system-ui;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@ html {
 }
 
 .titleEntry {
-  width: 20vw; 
+  width: 20vw;
   margin: 1vw 1vw 1vw 1vw;
   padding: 1vw 1vw 1vw 1vw;
 }
@@ -25,14 +25,14 @@ html {
 }
 
 .numEntry {
-  
+
   width: 30px;
   margin: 1vw 1vw 1vw 1vw;
   padding: 1vw 1vw 1vw 1vw;
 }
 
 label {
-  text-align:right;
+  text-align: right;
   font-weight: 200;
 }
 
@@ -40,7 +40,7 @@ label {
   background-color: mediumseagreen;
   width: 60%;
   color: #f7fbff;
-  font-weight:700;
+  font-weight: 700;
   padding: .5vw .5vw .5vw .5vw;
   margin: .5vw .5vw .5vw .5vw;
 }
@@ -55,14 +55,37 @@ label {
   border-radius: 10px;
   background-color: #4287f5;
   color: #f7fbff;
-  font-weight:700;
+  font-weight: 700;
   border: none;
   padding: 1vw;
   margin: 2px 4px;
 }
 
 .submitBtn:hover {
-  background-color:#425df5;
+  background-color: #425df5;
   transform: scale(0.97);
   transition: all 0.3s ease-in-out;
+}
+
+.ModalOutside {
+  background: #f2f2f2;
+  border-radius: 8px;
+  padding: 24px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+}
+
+.ModalInside{
+
+            background: #ccc;
+            border-Radius: 8;
+            padding: 24;
+            max-Width: 500;
+            max-Height: 80vh;
+            overflow-y: auto;
+            box-Shadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+
+
 }
