@@ -70,22 +70,26 @@ label {
 .ModalOutside {
   background: #f2f2f2;
   border-radius: 8px;
-  padding: 24px;
+  padding: 5px;
   max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
+  color: darkgray; 
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
 }
 
 .ModalInside{
 
-            background: #ccc;
+            background: #000;
             border-Radius: 8;
-            padding: 24;
+            padding: 10;
             max-Width: 500;
             max-Height: 80vh;
             overflow-y: auto;
+            color: darkgray; 
             box-Shadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
 
 
 }
+
+
