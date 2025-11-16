@@ -26,7 +26,6 @@ const fetchData = async (endpoint, setter) => {
     }
     const json = await res.json();
     const normalized = normalizeResponse(json);
-    console.log('fetchData normalized:', normalized);
     setter(normalized);
   } catch (err) {
     console.error('Error fetching:', err);
