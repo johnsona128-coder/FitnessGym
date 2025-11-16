@@ -31,7 +31,6 @@ export default function Exercises() {
   }, []);
 
   const handleClick = (exerciseId) => {
-    console.log("Selected Exercise ID:", exerciseId);
     setSelectedExerciseId(exerciseId);
     setShowModal(true);
   };
