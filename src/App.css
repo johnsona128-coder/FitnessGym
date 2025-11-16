@@ -4,6 +4,7 @@ html {
   height: 100%;
 }
 
+
 #app {
   color-scheme: dark;
   font-family: system-ui;
@@ -52,14 +53,18 @@ label {
 }
 
 .submitBtn {
-  border-radius: 10px;
-  background-color: #4287f5;
-  color: #f7fbff;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
   font-weight: 700;
   border: none;
-  padding: 1vw;
+  padding: 10px 20px;
   margin: 2px 4px;
+  cursor: pointer;
+  margin-top: 30px;
 }
+
+
 
 .submitBtn:hover {
   background-color: #425df5;
@@ -68,28 +73,50 @@ label {
 }
 
 .ModalOutside {
-  background: #f2f2f2;
+  background: #000;
   border-radius: 8px;
-  padding: 5px;
-  max-width: 500px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  max-width: 600px;
   max-height: 80vh;
+  margin: 0 auto;
   overflow-y: auto;
-  color: darkgray; 
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
 }
 
-.ModalInside{
+.ModalInside {
 
-            background: #000;
-            border-Radius: 8;
-            padding: 10;
-            max-Width: 500;
-            max-Height: 80vh;
-            overflow-y: auto;
-            color: darkgray; 
-            box-Shadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+  background: #000;
+  border-Radius: 8;
+  padding: 10;
+  max-Width: 500;
+  max-Height: 80vh;
+  overflow-y: auto;
+  color: darkgray;
+  box-Shadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
 
 
 }
 
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 3 columns */
+  grid-template-rows: repeat(2, auto);  /* 2 rows */
+  gap: 12px;
+}
 
+.item {
+  background: #f0f0f0;
+  padding: 5px;
+  border-radius: 8px;
+  color: black;
+}
+
+.detailsTitle {
+  font-weight: 600;
+}
+
+h2{
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
