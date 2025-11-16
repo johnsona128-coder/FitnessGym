@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link } from 'react-router';
-import Demonstration from './exercises/Demonstration';
+import Exercises from './exercises/Exercises'
 
 export function App() {
   return (
@@ -9,10 +9,10 @@ export function App() {
         <h1>Healthy Habits Gym</h1> 
         <BrowserRouter>
           <nav>
-            <Link to="/">Home</Link> | <Link to="/Demonstration">Exercises</Link>
+            <Link to="/">Home</Link> | <Link to="/Exercises">Exercises</Link>
           </nav>
           <Routes>
-            <Route path="/Demonstration" element={< Demonstration/>}/>
+            <Route path="/Exercises" element={< Exercises/>}/>
           </Routes>
         </BrowserRouter>
       </div>
