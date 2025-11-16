@@ -21,7 +21,7 @@ export default function ExerciseDetailsModal({ show, onClose, exerciseId }) {
 
       try {
         // Fetch all exercises and find the selected one
-        await fetchData(`${baseApiURL}/exercises`, (data) => {
+        await fetchData(`${baseApiURL}/exercises/${exerciseId}`, (data) => {
           const arr = Array.isArray(data) ? data : [];
           const selected = arr.find(e => e.id === exerciseId);
           if (!selected) throw new Error("Exercise not found");
