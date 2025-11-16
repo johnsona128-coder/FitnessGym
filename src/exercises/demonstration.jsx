@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Dumbbell, Plus, Edit2, Trash2, List, ChevronDown, ChevronUp, Divide } from 'lucide-react';
-import fetchData, { apiURL } from '../utils';
-import { apiURL as helperApiURL } from '../utils';
+import fetchData, { apiURL } from '../components/utils';
+import { apiURL as helperApiURL } from '../components/utils';
 
 const baseApiURL = helperApiURL.replace(/\/$/, '');
 
@@ -34,18 +33,11 @@ export default function Demonstration() {
 
 
 
-  const handleSelectChange = (e) => {
-    const id = e.target.value;
-    setSelectedExercise(id);
-
-    if (id !== 'all') {
-      // Find the exercise by id
-      const exercise = exercises.find(ex => ex.id === parseInt(id));
-      if (exercise) {
-        setSelectedExerciseData(exercise);
-        setShowModal(true);
-      }
-    }
+  const handleExerciseClick = (exercise) => {
+    if (!exercise) return;
+    setSelectedExercise(exercise.id ?? exercise.ID ?? exercise.ExerciseID ?? 'selected');
+    setSelectedExerciseData(exercise);
+    setShowModal(true);
   };
 
   // Fetch steps when an exercise is selected
@@ -91,14 +83,19 @@ export default function Demonstration() {
 
   return (
     <div>
-      {/* Bulleted list of exercises (click an item to open details) */}
-      <ul style={{ paddingLeft: 20 }}>
-        {Array.isArray(exercises) && exercises.map((mg) => (
-          <li key={mg.id} style={{ marginBottom: 6, cursor: 'pointer' }} onClick={() => { setSelectedExercise(mg.id); setSelectedExerciseData(mg); setShowModal(true); }}>
-            {mg.exerciseName}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h3>All Exercises ({Array.isArray(exercises) ? exercises.length : 0})</h3>
+        <ul>
+          {Array.isArray(exercises) && exercises.map((mg) => (
+            <li key={mg.id ?? mg.ID ?? mg.ExerciseID ?? mg.exerciseID ?? mg.exerciseName}
+                style={{ cursor: 'pointer', textDecoration: 'underline', margin: '6px 0' }}
+                onClick={() => handleExerciseClick(mg)}
+            >
+              {mg.exerciseName ?? mg.exercise_name ?? mg.ExerciseName}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Modal */}
       {showModal && selectedExerciseData && (
