@@ -9,6 +9,7 @@ const baseApiURL = helperApiURL.replace(/\/$/, "");
 export default function ExerciseDetailsModal({ show, onClose, exerciseId }) {
   const [exercise, setExercise] = useState(null);
   const [steps, setSteps] = useState([]);
+  const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -33,10 +34,18 @@ export default function ExerciseDetailsModal({ show, onClose, exerciseId }) {
           const arr = Array.isArray(data) ? data : [];
           setSteps(arr);
         });
+
+        // Fetch photos for specific exercise
+        await fetchData(`${baseApiURL}/exercises/${exerciseId}/photos/`, (data) => {
+          const arr = Array.isArray(data) ? data : [];
+          setPhotos(arr);
+        });
+
       } catch (err) {
         setError(err.message || String(err));
         setExercise(null);
         setSteps([]);
+        setPhotos([]);
       } finally {
         setLoading(false);
       }
@@ -57,6 +66,17 @@ export default function ExerciseDetailsModal({ show, onClose, exerciseId }) {
           <>
             <h2>{exercise.exerciseName}</h2>
             <p>{exercise.category} - {exercise.equipment}</p>
+
+            <h3>Instructions</h3>
+            {steps.length > 0 ? (
+              <ol>
+                {steps.map((s) => (
+                  <li key={s.id}>{s.instruction}</li>
+                ))}
+              </ol>
+            ) : (
+              <p>No instructions available.</p>
+            )}
             <div className="exercise-grid">
               <div className="item">
                 <span className="detailsTitle">Force</span><br />{exercise.forceType || "N/A"}
@@ -75,16 +95,6 @@ export default function ExerciseDetailsModal({ show, onClose, exerciseId }) {
               </div>
             </div>
 
-            <h3>Instructions</h3>
-            {steps.length > 0 ? (
-              <ol>
-                {steps.map((s) => (
-                  <li key={s.id}>{s.instruction}</li>
-                ))}
-              </ol>
-            ) : (
-              <p>No instructions available.</p>
-            )}
 
             <button className='submitBtn' onClick={onClose}>Close</button>
 
