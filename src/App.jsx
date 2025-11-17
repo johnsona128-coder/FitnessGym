@@ -1,10 +1,25 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export function App() {
+import HomePage from "./pages/HomePage";
+import MemberLoginPage from "./pages/MemberLoginPage";
+import MemberSignupPage from "./pages/MemberSignupPage";
+import MemberDashboardPage from "./pages/MemberDashboardPage";
+import OwnerDashboardPage from "./pages/OwnerDashboardPage";
+
+export default function App() {
   return (
-    <>
-      <h1>Parcel React App</h1>
-      <p>Edit <code>src/App.jsx</code> to get started!</p>
-    </>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/member-login" element={<MemberLoginPage />} />
+        <Route path="/member-signup" element={<MemberSignupPage />} />
+        <Route path="/member-dashboard" element={<MemberDashboardPage />} />
+
+        <Route path="/owner-dashboard" element={<OwnerDashboardPage />} />
+
+      </Routes>
+    </BrowserRouter>
   );
 }
