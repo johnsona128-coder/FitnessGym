@@ -1,11 +1,16 @@
-import { createRoot } from 'react-dom/client';
-import { StrictMode } from 'react';
-import { App } from './App';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
 
-let container = document.getElementById("app");
-let root = createRoot(container)
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+const container = document.getElementById("app"); // IMPORTANT: 'app'
+
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error("Could not find element with id 'app'");
+}
