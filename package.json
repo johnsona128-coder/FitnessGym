@@ -8,28 +8,14 @@
     "build": "parcel build"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "mysql2": "^3.15.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "lucide-react": "^0.553.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.9.6"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "parcel": "^2.14.0"
-  },
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/johnsona128-coder/FitnessGym.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/johnsona128-coder/FitnessGym/issues"
-  },
-  "homepage": "https://github.com/johnsona128-coder/FitnessGym#readme"
+  }
 }
