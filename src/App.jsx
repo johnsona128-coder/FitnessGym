@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link } from 'react-router';
-import Exercises from './exercises/Exercises'
+import Exercises from './exercises/exercises'
 
 export function App() {
   return (
