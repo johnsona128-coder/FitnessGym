@@ -3,6 +3,7 @@ name: Product Backlog Item (Feature)
 description: Use this template for new user stories, features, or requirements.
 title: "[PBI]: "
 labels: ["pbi", "feature", "to do"]
+projects: ['johnsona128-coder/Info 530 - Gym Application']
 
 body:
   - type: markdown
