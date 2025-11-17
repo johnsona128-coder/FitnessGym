@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import fetchData, { apiURL as helperApiURL } from '../components/utils.js';
+import fetchData, { apiURL as helperApiURL } from '../components/utils.jsx';
 import ExerciseDetailsModal from "./ExerciseDetailsModal.jsx";
 
 const baseApiURL = helperApiURL.replace(/\/$/, '');
@@ -49,6 +49,8 @@ export default function Exercises() {
       {exercises.length === 0 ? (
         <div>No exercises available.</div>
       ) : (
+
+
         <ul>
           {exercises.map((ex) => (
             <li
@@ -62,7 +64,7 @@ export default function Exercises() {
         </ul>
       )}
 
-      {/* Pass selectedExerciseId to modal */}
+    {/* Pass selectedExerciseId to modal */}
       <ExerciseDetailsModal
         show={showModal}
         onClose={closeModal}
