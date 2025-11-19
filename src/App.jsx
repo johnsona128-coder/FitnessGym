@@ -6,11 +6,6 @@ import Exercises from './exercises/exercises'
 import RoleSelection from "./pages/RoleSelection";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import MemberDashboard from "./pages/MemberDashboard";
-import HomePage from "./pages/HomePage";
-import MemberLoginPage from "./pages/MemberLoginPage";
-import MemberSignupPage from "./pages/MemberSignupPage";
-import MemberDashboardPage from "./pages/MemberDashboardPage";
-import OwnerDashboardPage from "./pages/OwnerDashboardPage";
 
 export default function App() {
   return (
@@ -27,10 +22,6 @@ export default function App() {
             <Route path="/" element={<RoleSelection />} />
             <Route path="/owner" element={<OwnerDashboard />} />
             <Route path="/member" element={<MemberDashboard />} />
-            <Route path="/member-login" element={<MemberLoginPage />} />
-            <Route path="/member-signup" element={<MemberSignupPage />} />
-            <Route path="/member-dashboard" element={<MemberDashboardPage />} />
-            <Route path="/owner-dashboard" element={<OwnerDashboardPage />} />
           </Routes>
         </BrowserRouter>
       </div>
