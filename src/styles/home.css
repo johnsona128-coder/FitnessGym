@@ -1,0 +1,85 @@
+/* ========================
+   MAIN CONTAINER
+======================== */
+.home-container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  min-height: 100vh;
+}
+
+/* ========================
+   HEADER WITH LOGO
+======================== */
+.home-header {
+  background: #111;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.logo {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ========================
+   HERO SECTION
+======================== */
+.hero-section {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.hero-section h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* ========================
+   BUTTON STYLES
+======================== */
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  margin: auto;
+  gap: 20px;
+}
+
+.btn-owner,
+.btn-member {
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-owner {
+  background: #333;
+  color: white;
+}
+
+.btn-owner:hover {
+  background: #222;
+}
+
+.btn-member {
+  background: #7f57ff;
+  color: white;
+}
+
+.btn-member:hover {
+  background: #6844d3;
+}
