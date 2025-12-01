@@ -1,0 +1,68 @@
+/* ================================
+   DASHBOARD CONTAINER
+================================= */
+.dashboard-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+/* ================================
+   USER INFO CARD
+================================= */
+.info-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.info-card h2 {
+  margin-bottom: 15px;
+}
+
+.info-card p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* ================================
+   WEEKLY TIMETABLE
+================================= */
+.schedule-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.timetable {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.day {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+}
+
+.day strong {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.day p {
+  margin: 0;
+}
