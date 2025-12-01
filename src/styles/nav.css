@@ -1,0 +1,18 @@
+/* src/components/navigation/NavBar.css */
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #222;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
+}
