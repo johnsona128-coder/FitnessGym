@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link } from 'react-router';
 import WorkoutBuilder from './workout/WorkoutBuilder'; // Correctly imports the default export
+import MemberWorkout from './workout/MemberWorkout'; // Correctly imports the default export
 import Exercises from './exercises/exercises'
 //import RoleSelection from "./profile/RoleSelection";
 import OwnerDashboard from "./profile/OwnerDashboard";
@@ -28,7 +29,9 @@ export function App() {
             <Route path="/member-login" element={<MemberLoginPage />} />
             <Route path="/member-signup" element={<MemberSignupPage />} />
             <Route path="/member-dashboard" element={<MemberDashboardPage />} />
+            <Route path="/member-workout" element={<MemberWorkout />} />
             <Route path="/owner-dashboard" element={<OwnerDashboardPage />} />
+
           </Routes>
         </BrowserRouter>
       </div>
