@@ -9,21 +9,14 @@ export default function RoleSelection() {
 
       <button
         onClick={() => navigate("/owner")}
-        style={{
-          padding: "10px 20px",
-          marginRight: "20px",
-          fontSize: "18px",
-        }}
+        style={{ padding: "10px 20px", marginRight: "20px", fontSize: "18px" }}
       >
         Owner
       </button>
 
       <button
         onClick={() => navigate("/member")}
-        style={{
-          padding: "10px 20px",
-          fontSize: "18px",
-        }}
+        style={{ padding: "10px 20px", fontSize: "18px" }}
       >
         Member
       </button>
