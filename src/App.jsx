@@ -1,3 +1,7 @@
+import WorkoutDashboard from "./pages/WorkoutDashboard";
+
+export default function App() {
+  return <WorkoutDashboard />;
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router';
 import './App.css';
