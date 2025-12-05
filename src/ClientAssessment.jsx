@@ -11,8 +11,8 @@ function ClientAssessment() {
     const initialAssessmentState = {
         clientName: '',
         fitnessLevel: 'Beginner', // Required dropdown default
-        goals: '',                // Required text area (empty for now)
-        injuriesConcerns: ''      // Optional text area (empty for now)
+        goals: '',                // Required text area
+        injuriesConcerns: ''      // Optional text area
     };
     
     const [assessment, setAssessment] = useState(initialAssessmentState);
@@ -74,7 +74,52 @@ function ClientAssessment() {
                         <option value="Advanced">Advanced (High intensity/specific training)</option>
                     </select>
                 </div>
-                
+
+                {/* -------- GOALS & CONCERNS SECTION -------- */}
+                <hr style={{ margin: '20px 0' }} />
+                <h3>Assessment Details</h3>
+
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'block', fontWeight: 'bold' }}>Goals (Required):</label>
+                    <textarea
+                        name="goals"
+                        value={assessment.goals}
+                        onChange={handleAssessmentChange}
+                        required
+                        rows="4"
+                        placeholder="Describe the client's primary fitness goals."
+                        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+                    ></textarea>
+                </div>
+
+                <div style={{ marginBottom: '20px' }}>
+                    <label style={{ display: 'block', fontWeight: 'bold' }}>Injuries/Concerns (Optional):</label>
+                    <textarea
+                        name="injuriesConcerns"
+                        value={assessment.injuriesConcerns}
+                        onChange={handleAssessmentChange}
+                        rows="4"
+                        placeholder="List any past injuries, chronic pain, or medical concerns."
+                        style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
+                    ></textarea>
+                </div>
+
+                {/* -------- FINAL SAVE BUTTON (Submission AC) -------- */}
+                <button 
+                    type="submit" 
+                    style={{ 
+                        marginTop: '30px', 
+                        padding: '10px 20px', 
+                        backgroundColor: '#4CAF50', 
+                        color: 'white', 
+                        border: 'none', 
+                        cursor: 'pointer', 
+                        borderRadius: '5px' 
+                    }}
+                >
+                    Save Assessment
+                </button>
+
             </form>
         </div>
     );
