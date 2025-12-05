@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 //Getting a reusable connection for fetching data and one central location for setting the URL for the API
 import fetchData, { apiURL as helperApiURL } from "../components/utils";
-import AutoImageSlider from "../components/photos";
+/*import AutoImageSlider from "../components/photos";*/
 
 const baseApiURL = helperApiURL.replace(/\/$/, "");
 
