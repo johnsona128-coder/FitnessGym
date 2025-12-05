@@ -1,75 +1,38 @@
-import { useState, useEffect } from 'react';
-import fetchData, { apiURL as helperApiURL } from '../components/utils.jsx';
-import ExerciseDetailsModal from "./ExerciseDetailsModal.jsx";
-
-const baseApiURL = helperApiURL.replace(/\/$/, '');
+import React, { useState } from "react";
 
 export default function Exercises() {
-  const [exercises, setExercises] = useState([]);
-  const [selectedExerciseId, setSelectedExerciseId] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-
-  useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const endpoint = `${baseApiURL}/exercises`;
-        await fetchData(endpoint, (data) => {
-          setExercises(Array.isArray(data) ? data : []);
-        });
-      } catch (err) {
-        setError(err.message || String(err));
-        setExercises([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    load();
-  }, []);
-
-  const handleClick = (exerciseId) => {
-    setSelectedExerciseId(exerciseId);
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedExerciseId(null);
-  };
-
-  if (loading) return <div>Loading exercises…</div>;
-  if (error) return <div style={{ color: 'crimson' }}>Error loading exercises: {error}</div>;
+  // Fake placeholder exercise list for demo
+  const [exercises] = useState([
+    { id: 1, name: "Bench Press", muscle: "Chest" },
+    { id: 2, name: "Squats", muscle: "Legs" },
+    { id: 3, name: "Deadlift", muscle: "Back" },
+  ]);
 
   return (
-    <div>
-      <h2>Exercises</h2>
+    <div style={{ padding: "20px" }}>
+      <h2>Available Exercises</h2>
+
       {exercises.length === 0 ? (
-        <div>No exercises available.</div>
+        <p>No exercises found.</p>
       ) : (
-
-
-        <ul>
-          {exercises.map((ex) => (
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {exercises.map((exercise) => (
             <li
-              key={ex.id}
-              onClick={() => handleClick(ex.id)}
-              style={{ cursor: 'pointer', textDecoration: 'underline', margin: '6px 0' }}
+              key={exercise.id}
+              style={{
+                border: "1px solid #ccc",
+                margin: "10px 0",
+                padding: "10px",
+                borderRadius: "5px",
+                background: "#111",
+              }}
             >
-              {ex.exerciseName}
+              <strong>{exercise.name}</strong>
+              <p>Target Muscle: {exercise.muscle}</p>
             </li>
           ))}
         </ul>
       )}
-
-    {/* Pass selectedExerciseId to modal */}
-      <ExerciseDetailsModal
-        show={showModal}
-        onClose={closeModal}
-        exerciseId={selectedExerciseId}  
-      />
     </div>
   );
 }

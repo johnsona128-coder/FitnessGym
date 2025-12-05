@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const apiURL = 'http://localhost:3001/';
 
-
-//Normalizes API responses to extract the data payload.
+// Normalizes API responses to extract the data payload.
 const normalizeResponse = (json) => {
   if (Array.isArray(json)) {
     return json;
@@ -17,19 +16,24 @@ const normalizeResponse = (json) => {
   return [];
 };
 
-//Fetches the data
+// Generic fetch helper. It does NOT log with console.error
+// and lets the caller handle any errors.
 const fetchData = async (endpoint, setter) => {
-  try {
-    const res = await fetch(endpoint);
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const json = await res.json();
-    const normalized = normalizeResponse(json);
-    setter(normalized);
-  } catch (err) {
-    console.error('Error fetching:', err);
+  const res = await fetch(endpoint);
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
   }
+
+  const json = await res.json();
+  const normalized = normalizeResponse(json);
+
+  if (typeof setter === 'function') {
+    setter(normalized);
+  }
+
+  // Also return the data for callers that want it
+  return normalized;
 };
 
-export default fetchData; 
+export default fetchData;
