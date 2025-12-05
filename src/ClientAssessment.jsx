@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 /**
  * PBI 2.1: Assessment Data Entry
  * This component allows a gym owner to record initial assessment information for a new client.
+ * It includes validation, submission logic, and a form reset for an efficient workflow.
  */
 function ClientAssessment() {
 
@@ -25,13 +26,29 @@ function ClientAssessment() {
         });
     };
 
-    // Placeholder for submit logic (to be completed in commit 3)
+    // FUNCTION: Validates, saves, displays success message, and resets the form
     const handleSubmitAssessment = (e) => {
         e.preventDefault();
-        console.log("Submit logic coming in later commit");
+
+        // VALIDATION (Acceptance Criterion 2): Check for required fields
+        if (!assessment.clientName || !assessment.fitnessLevel || !assessment.goals) {
+            alert('Validation Failed: Please fill out the Client Name, Fitness Level, and Goals fields before saving.');
+            return;
+        }
+
+        // --- Simulated Submission ---
+        console.log('--- PBI 2.1: SAVING CLIENT ASSESSMENT ---');
+        console.log(`Client: ${assessment.clientName}, Level: ${assessment.fitnessLevel}`);
+        console.log(JSON.stringify(assessment, null, 2));
+
+        // SUCCESS MESSAGE (Acceptance Criterion 3)
+        alert(`Assessment successfully recorded for ${assessment.clientName}!`);
+
+        // RESET: Clear the form for the next client
+        setAssessment(initialAssessmentState);
     };
 
-    // RENDER: Returns the UI for the Client Assessment form
+    // RENDER: Returns the entire UI for the Client Assessment form
     return (
         <div 
             className="assessment-form" 
