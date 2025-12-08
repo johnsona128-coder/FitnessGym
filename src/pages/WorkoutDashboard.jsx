@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { fetchCurrentWorkout } from "../api/workoutApi";
 
 export default function WorkoutDashboard() {
   const [date, setDate] = useState("");
+  const [apiWorkout, setApiWorkout] = useState(null);
+  const [msg, setMsg] = useState("");
+  const [memberId, setMemberId] = useState("1"); // simple member id input
 
   const workouts = {
     Sunday: [
@@ -63,6 +67,27 @@ export default function WorkoutDashboard() {
 
   const todayWorkout = getWorkout(date);
 
+  // simple API loader
+  async function loadWorkoutFromApi() {
+    setMsg("Loading...");
+    setApiWorkout(null);
+
+    try {
+      const data = await fetchCurrentWorkout(memberId);
+      if (data && data.success && data.workout) {
+        setApiWorkout(data.workout);
+        setMsg("");
+      } else if (data && data.success && !data.workout) {
+        setMsg(data.message || "No workout assigned");
+      } else {
+        setMsg((data && data.message) || "Unable to fetch workout");
+      }
+    } catch (err) {
+      setMsg("Error fetching workout");
+      console.error(err);
+    }
+  }
+
   return (
     <div style={styles.page}>
       <h2>Workout Dashboard</h2>
@@ -86,6 +111,47 @@ export default function WorkoutDashboard() {
       ) : (
         <p style={{ marginTop: 12 }}>Choose a date to see your workout.</p>
       )}
+
+      <hr style={{ marginTop: 20 }} />
+
+      {/* Simple API section */}
+      <div>
+        <h3>Current Workout From DB</h3>
+
+        <div style={{ marginBottom: 8 }}>
+          <label>Member ID: </label>
+          <input
+            type="text"
+            value={memberId}
+            onChange={(e) => setMemberId(e.target.value)}
+            style={{ width: 60, marginRight: 8 }}
+          />
+          <button onClick={loadWorkoutFromApi}>Load Workout</button>
+        </div>
+
+        {msg && <p>{msg}</p>}
+
+        {apiWorkout && (
+          <div style={styles.box}>
+            <p><strong>Date:</strong> {apiWorkout.date}</p>
+            {apiWorkout.notes && <p><strong>Notes:</strong> {apiWorkout.notes}</p>}
+
+            <h4>Exercises</h4>
+            <ul>
+              {apiWorkout.exercises && apiWorkout.exercises.length > 0 ? (
+                apiWorkout.exercises.map((ex, i) => (
+                  <li key={i}>
+                    <strong>{ex.name}</strong> — {ex.sets} sets × {ex.reps} reps
+                    {ex.notes && <div>Notes: {ex.notes}</div>}
+                  </li>
+                ))
+              ) : (
+                <li>No exercises attached to this workout.</li>
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
