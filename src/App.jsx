@@ -10,6 +10,7 @@ import MemberLoginPage from "./profile/MemberLoginPage";
 import MemberSignupPage from "./profile/MemberSignupPage";
 import MemberDashboardPage from "./profile/MemberDashboardPage";
 import OwnerDashboardPage from "./profile/OwnerDashboardPage";
+import ClientAssessment from "./workout/ClientAssessment";
 
 export function App() {
   return (
@@ -29,6 +30,7 @@ export function App() {
             <Route path="/member-signup" element={<MemberSignupPage />} />
             <Route path="/member-dashboard" element={<MemberDashboardPage />} />
             <Route path="/owner-dashboard" element={<OwnerDashboardPage />} />
+            <Route path="/client-assessment" element={<ClientAssessment />} />
           </Routes>
         </BrowserRouter>
       </div>
