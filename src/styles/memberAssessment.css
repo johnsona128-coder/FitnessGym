@@ -1,4 +1,4 @@
-/* MemberAssessment.css - Dark Theme */
+/* MemberAssessment.css - Dark Theme with ADA Accessibility */
 
 .member-assessment-container {
   padding: 20px;
@@ -13,7 +13,7 @@
   text-align: center;
   margin-bottom: 40px;
   padding: 30px;
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  background: linear-gradient(135deg, #5a6c7d 0%, #394455 100%);
   border-radius: 12px;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -28,20 +28,21 @@
 .welcome-message {
   margin: 0;
   font-size: 18px;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* Assessment Form Styles */
 .assessment-form {
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #3a3a3a;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #2d2d2d;
 }
 
 .assessment-form h2 {
-  color: #333;
+  color: #e0e0e0;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -53,7 +54,7 @@
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
-  color: #555;
+  color: #b0b0b0;
   text-align: left;
 }
 
@@ -61,24 +62,24 @@
 .form-select,
 .form-textarea {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #3a3a3a;
   border-radius: 4px;
   font-size: 14px;
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
   display: block;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
 }
 
 .form-select {
   cursor: pointer;
-  background-color: white;
-  color: #333;
 }
 
 .form-select option {
-  background-color: white;
-  color: #333;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
   padding: 10px;
 }
 
@@ -91,13 +92,12 @@
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #28a745;
-  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.1);
+  border-color: #4a90e2;
 }
 
 .form-input:disabled {
-  background-color: #f5f5f5;
-  color: #666;
+  background-color: #2d2d2d;
+  color: #777;
   cursor: not-allowed;
 }
 
@@ -110,7 +110,7 @@
 
 .save-assessment-btn {
   padding: 12px 24px;
-  background-color: #28a745;
+  background-color: #4a90e2;
   color: white;
   border: none;
   border-radius: 5px;
@@ -123,11 +123,16 @@
 }
 
 .save-assessment-btn:hover:not(:disabled) {
-  background-color: #218838;
+  background-color: #357abd;
+}
+
+.save-assessment-btn:focus {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
 }
 
 .save-assessment-btn:disabled {
-  background-color: #6c757d;
+  background-color: #3a3a3a;
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -136,35 +141,43 @@
   padding: 12px 24px;
   background-color: #4a4a4a;
   color: white;
-  border: none;
+  border: 2px solid #5a5a5a;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 }
 
 .clear-btn:hover {
   background-color: #5a5a5a;
+  border-color: #6a6a6a;
+}
+
+.clear-btn:focus {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
 }
 
 /* Assessment History Section */
 .assessment-history-section {
   margin-top: 30px;
   padding: 20px;
-  background-color: #2d2d2d;
+  background-color: #1e1e1e;
   border-radius: 8px;
+  border-left: 4px solid #60a5fa;
 }
 
 .assessment-history-section h3 {
-  color: #e0e0e0;
+  color: #f5f5f5;
+  margin-top: 0;
   margin-bottom: 15px;
 }
 
 .no-assessments-message {
-  color: #b0b0b0;
+  color: #888;
   padding: 10px;
-  background-color: #3a3a3a;
+  background-color: #2d2d2d;
   border-radius: 4px;
   text-align: center;
 }
@@ -176,17 +189,17 @@
 }
 
 .assessment-card {
-  border: 1px solid #4a4a4a;
+  border: 1px solid #3a3a3a;
   border-radius: 8px;
   padding: 20px;
-  background-color: #3a3a3a;
+  background-color: #2d2d2d;
   transition: all 0.2s;
 }
 
 .assessment-card:hover {
-  background-color: #424242;
+  background-color: #3a3a3a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
 }
 
 .assessment-header {
@@ -195,17 +208,17 @@
   align-items: center;
   margin-bottom: 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #4a4a4a;
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .assessment-date {
   font-weight: 600;
-  color: #e0e0e0;
+  color: #f5f5f5;
   font-size: 1.1rem;
 }
 
 .fitness-level-badge {
-  background-color: #28a745;
+  background-color: #4a90e2;
   color: white;
   padding: 5px 12px;
   border-radius: 20px;
@@ -220,19 +233,19 @@
 }
 
 .assessment-section {
-  color: #b0b0b0;
+  color: #d1d1d1;
 }
 
 .assessment-section strong {
   display: block;
-  color: #e0e0e0;
+  color: #f5f5f5;
   margin-bottom: 5px;
 }
 
 .assessment-section p {
   margin: 0;
   line-height: 1.6;
-  color: #b0b0b0;
+  color: #d1d1d1;
 }
 
 /* Loading and Error States */
@@ -241,16 +254,13 @@
   padding: 20px;
   text-align: center;
   font-size: 16px;
-}
-
-.loading-message {
   color: #e0e0e0;
 }
 
 .error-message {
   color: #ff6b6b;
-  background-color: #3a2020;
-  border: 1px solid #5a3030;
+  background-color: #2d2d2d;
+  border: 1px solid #dc3545;
   border-radius: 4px;
 }
 
